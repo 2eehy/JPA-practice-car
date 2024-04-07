@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>query method</title>
+</head>
+<body>
+
+
+    <h3>카테고리별 차량 목록 조회</h3>
+    <form action="/car/search">
+        <label>카테고리 : </label>
+        <select name="categoryCode" id="categoryCode">
+        </select><br>
+        <input type="submit">
+    </form>
+
+    <script>
+        fetch('/car/category')
+            .then(res => res.json())
+            .then(data => {
+                const $categoryCode = document.getElementById('categoryCode');
+
+                for(let index in data) {
+                    const $option = document.createElement('option');
+                    $option.value = data[index].categoryCode;
+                    $option.textContent = data[index].categoryName;
+
+                    $categoryCode.appendChild($option);
+                }
+            });
+    </script>
+</body>
+</html>

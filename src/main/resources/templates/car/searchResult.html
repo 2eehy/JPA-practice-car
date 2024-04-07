@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search result</title>
+</head>
+<body>
+    <h1>[[${categoryCode}]]번 카테고리 차량 목록</h1>
+    <table>
+        <tr>
+            <th>차량번호</th>
+            <th>차량이름</th>
+            <th>차량가격</th>
+            <th>차종코드</th>
+            <th>판매상태</th>
+        </tr>
+        <tr th:each="car : ${ carList }">
+            <th th:text="${ car.carCode }"></th>
+            <th th:text="${ car.carName }"></th>
+            <th th:text="${ car.carPrice }"></th>
+            <th th:text="${ car.categoryCode }"></th>
+            <th th:text="${ car.orderableStatus }"></th>
+        </tr>
+    </table>
+</body>
+</html>
